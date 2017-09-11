@@ -67,10 +67,7 @@ console.log(normalize(json));
         text: "I am great!"
       },
       relationships: {
-        question: {
-          type: "question",
-          id: "295"
-        }      
+        question: ["295"]
       }
     }
   }
@@ -98,10 +95,7 @@ console.log(normalize(json, { endpoint: '/post-block/2620' }));
         type: "postBlock",
         id: "2620",
         relationships: {
-          "question": {
-            type: "question",
-            id: "295"
-          }      
+          "question": ["295"]
       }]
     }
   }
@@ -191,49 +185,6 @@ console.log(normalize(json, { endpoint: '/post-block/2620?page[cursor]=0'}));
       links: {
         first: "http://example.com/api/v1/post-block/2620?page[cursor]=0",
         next: "http://example.com/api/v1/post-block/2620?page[cursor]=20"            
-      }
-    }
-  }
-}
-*/
-```
-
-## Lazy Loading
-If you want to lazy load nested objects, json-api-normalizer will store links for that
-```JavaScript
-const json = {
-  data: [{
-    attributes: {
-      ...
-    },
-    id: "29",
-    relationships: {
-      "movie": {
-        "links": {
-          "self": "http://...",
-          "related": "http://..."
-        }
-      },        
-    },
-    type: "question"
-  }]
-};
-
-console.log(normalize(json));
-/* Output:
-{
-  question: {
-    "29": {
-      attributes: {
-        ...
-      },
-      relationships: {
-        movie: {
-          links: {
-            "self": "http://...",
-            "related": "http://..."
-          }
-        }        
       }
     }
   }
