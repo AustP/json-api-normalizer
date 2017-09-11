@@ -35,4 +35,13 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-dist
+
+# Development Stuff
+src
+test
+.babelrc
+.eslintrc
+.npmignore
+.travis.yml
+webpack.config.js
+yarn.lock
