@@ -40,7 +40,8 @@ describe('data is normalized', () => {
         },
         links: {
           self: 'http://www.example.com/post/3'
-        }
+        },
+        relationships: {}
       },
       "4": {
         id: 4,
@@ -50,7 +51,8 @@ describe('data is normalized', () => {
         },
         links: {
           self: 'http://www.example.com/post/4'
-        }
+        },
+        relationships: {}
       }
     }
   };
@@ -84,7 +86,8 @@ describe('data is normalized', () => {
           id: 1,
           attributes: {
             keyIsCamelized: 2
-          }
+          },
+          relationships: {}
         }
       }
     };
@@ -123,7 +126,8 @@ describe('included is normalized', () => {
         attributes: {
           text: 'hello',
           number: 3,
-        }
+        },
+        relationships: {}
       }
     ],
     data: [
@@ -133,7 +137,8 @@ describe('included is normalized', () => {
         attributes: {
           text: 'hello world',
           number: 4,
-        }
+        },
+        relationships: {}
       }
     ]
   };
@@ -145,14 +150,16 @@ describe('included is normalized', () => {
         attributes: {
           text: 'hello',
           number: 3
-        }
+        },
+        relationships: {}
       },
       "4": {
         id: 4,
         attributes: {
           text: 'hello world',
           number: 4
-        }
+        },
+        relationships: {}
       }
     }
   };
@@ -738,7 +745,8 @@ describe('complex', () => {
         id: 1,
         attributes: {
           slug: "superyuri"
-        }
+        },
+        relationships: {}
       }
     },
     "post": {
@@ -746,13 +754,15 @@ describe('complex', () => {
         id: 1606,
         attributes: {
           text: 'hello1'
-        }
+        },
+        relationships: {}
       },
       "4969": {
         id: 4969,
         attributes: {
           text: 'hello2'
-        }
+        },
+        relationships: {}
       }
     }
   };
@@ -794,7 +804,8 @@ describe('complex', () => {
         id: 1,
         attributes: {
           slug: "superyuri"
-        }
+        },
+        relationships: {}
       }
     },
     "post": {
@@ -802,13 +813,15 @@ describe('complex', () => {
         id: 1606,
         attributes: {
           text: 'hello1'
-        }
+        },
+        relationships: {}
       },
       "4969": {
         id: 4969,
         attributes: {
           text: 'hello2'
-        }
+        },
+        relationships: {}
       }
     }
   };

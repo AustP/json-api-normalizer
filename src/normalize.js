@@ -56,13 +56,12 @@ function extractEntities(json, { camelizeKeys }) {
 
       keys(elem.links).forEach((key) => {
         ret[type][elem.id].links[key] = elem.links[key];
-      })
+      });
     }
 
-    if (elem.relationships) {
-      ret[type][elem.id].relationships =
-        extractRelationships(elem.relationships, { camelizeKeys });
-    }
+    ret[type][elem.id].relationships = elem.relationships ?
+      extractRelationships(elem.relationships, { camelizeKeys }) :
+      {};
   });
 
   return ret;
@@ -98,10 +97,9 @@ function extractMetaData(json, endpoint, { camelizeKeys, filterEndpoint }) {
     wrap(json.data).forEach((object) => {
       const pObject = { id: object.id, type: camelizeKeys ? camelCase(object.type) : object.type };
 
-      if (object.relationships) {
-        pObject.relationships =
-          extractRelationships(object.relationships, { camelizeKeys });
-      }
+      pObject.relationships = object.relationships ?
+        extractRelationships(object.relationships, { camelizeKeys }) :
+        {};
 
       meta.push(pObject);
     });
