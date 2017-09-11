@@ -17,26 +17,14 @@ function extractRelationships(relationships, { camelizeKeys }) {
   keys(relationships).forEach((key) => {
     const relationship = relationships[key];
     const name = camelizeKeys ? camelCase(key) : key;
-    ret[name] = {};
+    ret[name] = [];
 
     if (typeof relationship.data !== 'undefined') {
       if (isArray(relationship.data)) {
-        ret[name].data = relationship.data.map(e => ({
-          id: e.id,
-          type: camelizeKeys ? camelCase(e.type) : e.type,
-        }));
+        ret[name] = relationship.data.map(e => e.id);
       } else if (!isNull(relationship.data)) {
-        ret[name].data = {
-          id: relationship.data.id,
-          type: camelizeKeys ? camelCase(relationship.data.type) : relationship.data.type,
-        };
-      } else {
-        ret[name].data = relationship.data;
+        ret[name] = [relationship.data.id];
       }
-    }
-
-    if (relationship.links) {
-      ret[name].links = relationship.links;
     }
   });
   return ret;

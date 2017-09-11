@@ -195,9 +195,7 @@ describe('relationships', () => {
             text: "hello",
           },
           relationships: {
-            question: {
-              data: null,
-            }
+            question: []
           }
         }
       }
@@ -232,9 +230,7 @@ describe('relationships', () => {
             text: "hello",
           },
           relationships: {
-            tags: {
-              data: [],
-            }
+            tags: []
           }
         }
       }
@@ -272,12 +268,7 @@ describe('relationships', () => {
             text: "hello",
           },
           relationships: {
-            question: {
-              data: {
-                id: 7,
-                type: "question",
-              },
-            }
+            question: [7]
           }
         }
       }
@@ -315,12 +306,7 @@ describe('relationships', () => {
             text: "hello",
           },
           relationships: {
-            tags: {
-              data: [{
-                id: 4,
-                type: "tag",
-              }],
-            }
+            tags: [4]
           }
         }
       }
@@ -370,73 +356,10 @@ describe('relationships', () => {
             text: "hello",
           },
           relationships: {
-            rel1ToCamelize: {
-              data: [{
-                id: 4,
-                type: "type1ToCamelize",
-              }],
-            },
-            rel2ToCamelize: {
-              data: [],
-            },
-            rel3ToCamelize: {
-              data: {
-                id: 4,
-                type: "type3ToCamelize",
-              },
-            },
-            rel4ToCamelize: {
-              data: null,
-            }
-          }
-        }
-      }
-    }
-
-    const result = normalize(json);
-
-    expect(isEqual(result, output)).to.be.true;
-  });
-
-  it('keep links', () => {
-    const json = {
-      data: [{
-        "type": "post",
-        "relationships": {
-          "tags": {
-            "data": [{
-              "id": 4,
-              "type": "tag"
-            }],
-            "links": {
-              "self": "http://example.com/api/v1/post/2620/tags",
-            }
-          }
-        },
-        "id": 2620,
-        "attributes": {
-          "text": "hello",
-        }
-      }]
-    };
-
-    const output = {
-      post: {
-        "2620": {
-          id: 2620,
-          attributes: {
-            text: "hello",
-          },
-          relationships: {
-            tags: {
-              data: [{
-                id: 4,
-                type: "tag",
-              }],
-              links: {
-                self: "http://example.com/api/v1/post/2620/tags",
-              }
-            }
+            rel1ToCamelize: [4],
+            rel2ToCamelize: [],
+            rel3ToCamelize: [4],
+            rel4ToCamelize: []
           }
         }
       }
@@ -475,12 +398,7 @@ describe('meta', () => {
           "text": "hello",
         },
         relationships: {
-          question: {
-            data: {
-              id: "295",
-              type: "question"
-            }
-          }
+          question: ["295"]
         }
       }
     },
@@ -490,12 +408,7 @@ describe('meta', () => {
           id: 2620,
           type: 'post',
           relationships: {
-            question: {
-              data: {
-                type: 'question',
-                id: '295'
-              }
-            }
+            question: ['295']
           }
         }]
       }
@@ -532,12 +445,7 @@ describe('meta', () => {
           "text": "hello",
         },
         relationships: {
-          question: {
-            data:{
-              id: "295",
-              type: "question"
-            }
-          }
+          question: ["295"]
         }
       }
     },
@@ -547,12 +455,7 @@ describe('meta', () => {
           type: 'post',
           id: 2620,
           relationships: {
-            question: {
-              data: {
-                type: 'question',
-                id: '295'
-              }
-            }
+            question: ['295']
           }
         }],
         links: {
@@ -571,12 +474,7 @@ describe('meta', () => {
           "text": "hello",
         },
         relationships: {
-          question: {
-            data: {
-              id: "295",
-              type: "question"
-            }
-          }
+          question: ["295"]
         }
       }
     },
@@ -587,12 +485,7 @@ describe('meta', () => {
             type: 'post',
             id: 2620,
             relationships: {
-              question: {
-                data: {
-                  type: 'question',
-                  id: '295'
-                }
-              }
+              question: ['295']
             }
           }],
           links: {
@@ -663,12 +556,7 @@ describe('meta', () => {
             "text": "hello",
           },
           relationships: {
-            question: {
-              data: {
-                id: "295",
-                type: "question"
-              }
-            }
+            question: ["295"]
           }
         }
       },
@@ -678,12 +566,7 @@ describe('meta', () => {
             type: 'post',
             id: 2620,
             relationships: {
-              question: {
-                data: {
-                  type: 'question',
-                  id: '295'
-                }
-              }
+              question: ['295']
             }
           }],
           meta: {
@@ -721,9 +604,7 @@ describe('meta', () => {
             text: "hello"
           },
           relationships: {
-            comments: {
-              data: []
-            }
+            comments: []
           }
         }
       }
@@ -830,15 +711,7 @@ describe('complex', () => {
           slug: "tbd",
         },
         relationships: {
-          "post-blocks": {
-            data: [{
-              id: 4601,
-              type: "post-block"
-            }, {
-              id: 2454,
-              type: "post-block"
-            }]
-          }
+          "post-blocks": [4601, 2454]
         }
       }
     },
@@ -847,42 +720,16 @@ describe('complex', () => {
         id: 2454,
         attributes: {},
         relationships: {
-          user: {
-            data: {
-              type: "user",
-              id: 1
-            }
-          },
-          posts: {
-            data: [{
-              type: "post",
-              id: 4969,
-            }, {
-              type: "post",
-              id: 1606,
-            }]
-          }
+          user: [1],
+          posts: [4969, 1606]
         }
       },
       "4601": {
         id: 4601,
         attributes: {},
         relationships: {
-          user: {
-            data: {
-              type: "user",
-              id: 1
-            }
-          },
-          posts: {
-            data: [{
-              type: "post",
-              id: 4969
-            },{
-              type: "post",
-              id: 1606,
-            }]
-          }
+          user: [1],
+          posts: [4969, 1606]
         }
       }
     },
@@ -920,15 +767,7 @@ describe('complex', () => {
           slug: "tbd",
         },
         relationships: {
-          "postBlocks": {
-            data: [{
-              id: 4601,
-              type: "postBlock"
-            }, {
-              id: 2454,
-              type: "postBlock"
-            }]
-          }
+          "postBlocks": [4601, 2454]
         }
       }
     },
@@ -937,42 +776,16 @@ describe('complex', () => {
         id: 2454,
         attributes: {},
         relationships: {
-          user: {
-            data: {
-              type: "user",
-              id: 1
-            }
-          },
-          posts: {
-            data: [{
-              type: "post",
-              id: 4969
-            }, {
-              type: "post",
-              id: 1606
-            }]
-          }
+          user: [1],
+          posts: [4969, 1606]
         }
       },
       "4601": {
         id: 4601,
         attributes: {},
         relationships: {
-          user: {
-            data: {
-              type: "user",
-              id: 1
-            }
-          },
-          posts: {
-            data: [{
-              type: "post",
-              id: 4969
-            },{
-              type: "post",
-              id: 1606
-            }]
-          }
+          user: [1],
+          posts: [4969, 1606]
         }
       }
     },
@@ -1018,15 +831,7 @@ describe('complex', () => {
         type: 'question',
         id: 29,
         relationships: {
-          'post-blocks': {
-            data: [{
-              type: 'post-block',
-              id: 4601
-            }, {
-              type: 'post-block',
-              id: 2454
-            }]
-          }
+          'post-blocks': [4601, 2454]
         }
       }]
     }
@@ -1038,15 +843,7 @@ describe('complex', () => {
         type: 'question',
         id: 29,
         relationships: {
-          'postBlocks': {
-            data: [{
-              type: 'postBlock',
-              id: 4601
-            }, {
-              type: 'postBlock',
-              id: 2454
-            }]
-          }
+          'postBlocks': [4601, 2454]
         }
       }]
     }
@@ -1062,53 +859,5 @@ describe('complex', () => {
     const result = normalize(json, { endpoint: '/post', camelizeKeys: true });
 
     expect(result.meta).to.be.eql(outputMeta2);
-  });
-});
-
-describe('lazy loading', () => {
-  const json = {
-    data: [{
-      id: 29,
-      attributes: {
-        yday: 228,
-        text: "Какие качества Вы больше всего цените в женщинах?",
-        slug: "tbd",
-      },
-      relationships: {
-        "movie": {
-          "links": {
-            "self": "http://localhost:3000/api/v1/actor/1c9d234b-66c4-411e-b785-955d57db5536/relationships/movie",
-            "related": "http://localhost:3000/api/v1/actor/1c9d234b-66c4-411e-b785-955d57db5536/movie"
-          }
-        },
-      },
-      type: "question"
-    }]
-  };
-
-  const output = {
-    question: {
-      "29": {
-        id: 29,
-        attributes: {
-          yday: 228,
-          text: "Какие качества Вы больше всего цените в женщинах?",
-          slug: "tbd",
-        },
-        relationships: {
-          movie: {
-            links: {
-              "self": "http://localhost:3000/api/v1/actor/1c9d234b-66c4-411e-b785-955d57db5536/relationships/movie",
-              "related": "http://localhost:3000/api/v1/actor/1c9d234b-66c4-411e-b785-955d57db5536/movie"
-            }
-          }
-        }
-      }
-    }
-  };
-
-  it('basic test', () => {
-    const result = normalize(json);
-    expect(isEqual(result, output)).to.be.true;
   });
 });
